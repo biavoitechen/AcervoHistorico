@@ -133,7 +133,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>Catálogo de Curiosidades Históricas</h1>
