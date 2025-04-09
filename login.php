@@ -2,7 +2,7 @@
 session_start();
 
 $usuarioValido = 'bia';
-$senhaHash = '$2y$10$sm0T7/jTxSjoqVDs5mI0HOIjBxo8hNQvwAVpMcX0B0p7e3vIjDQH2'; // senha: segredo123
+$senhaHash = '$2y$10$AR/Z59ix7gVkQZwtvIiSpuS8QUN.C8HgMDKT987WuWs31avjheZRC'; // senha: segredo123
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'] ?? '';
