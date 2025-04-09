@@ -38,7 +38,7 @@ Funcionalidades
 
 Para acessar a área administrativa (protegida), utilize os seguintes dados no formulário de login:
 
-- **Página de login:** [Clique aqui para acessar o login »](http://localhost/AcervoHistorico/login.php)
+- **Página de login:**
 - **Usuário:** `bia`  
 - **Senha:** `segredo123`
 
