@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Catálogo Histórico</title>
 
-    <!-- Fonte elegante do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
     <style>
