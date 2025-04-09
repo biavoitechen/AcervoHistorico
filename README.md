@@ -38,7 +38,7 @@ Funcionalidades
 
 Para acessar a área administrativa (protegida), utilize os seguintes dados no formulário de login:
 
-- **Página de login:**
+**Página de login:**
 - **Usuário:** `bia`  
 - **Senha:** `segredo123`
 
