@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,6 +28,36 @@
             font-size: 1.6em;
             font-weight: bold;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navegacao {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: -30px;
+        }
+
+        .botao {
+            display: inline-block;
+            background-color: #005eb8;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .botao:hover {
+            background-color: #004b95;
+        }
+
+        .botao-sair {
+            background-color: #c62828;
+        }
+
+        .botao-sair:hover {
+            background-color: #b71c1c;
         }
 
         main {
@@ -130,10 +161,34 @@
             text-align: center;
             margin-bottom: 20px;
         }
+
+        .mensagem-sucesso {
+            background-color: #e0f7e9;
+            color: #2e7d32;
+            border: 1px solid #b2dfdb;
+            padding: 15px;
+            margin: 25px auto 0;
+            width: 80%;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
     </style>
 </head>
 <body>
     <header>
         <h1>Catálogo de Curiosidades Históricas</h1>
     </header>
+
+    <div class="navegacao">
+        <?php if (!isset($_SESSION['logado'])): ?>
+            <a href="login.php" class="botao">Login</a>
+        <?php else: ?>
+            <a href="protegido.php" class="botao">Área Protegida</a>
+            <a href="logout.php" class="botao botao-sair">Sair</a>
+        <?php endif; ?>
+    </div>
+
     <main>

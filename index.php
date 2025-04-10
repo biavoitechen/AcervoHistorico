@@ -10,6 +10,12 @@
     include 'funcoes.php';
 ?>
 
+<?php if (isset($_GET['logout']) && $_GET['logout'] == 1): ?>
+    <p style="color: green; text-align: center; font-weight: bold; margin-top: 20px;">
+        Logout realizado com sucesso!
+    </p>
+<?php endif; ?>
+
 <h1>Catálogo de Curiosidades Históricas</h1>
 
 <div class="catalogo">
