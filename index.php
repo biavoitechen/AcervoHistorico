@@ -11,19 +11,19 @@
 ?>
 
 <?php if (isset($_GET['logout']) && $_GET['logout'] == 1): ?>
-    <p style="color: green; text-align: center; font-weight: bold; margin-top: 20px;">
-        Logout realizado com sucesso!
-    </p>
+    <div class="mensagem-sucesso">
+        ✅ Logout realizado com sucesso!
+    </div>
 <?php endif; ?>
 
 <h1>Catálogo de Curiosidades Históricas</h1>
 
-<div class="catalogo">
-    <?php
-    foreach ($itens as $item) {
-        exibirItem($item);
-    }
-    ?>
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <?php foreach ($itens as $item) {
+            exibirItem($item);
+        } ?>
+    </div>
 </div>
 
 <?php
