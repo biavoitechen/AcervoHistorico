@@ -11,7 +11,6 @@ if (!isset($_SESSION)) {
     <title>Catálogo Histórico</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -25,16 +24,6 @@ if (!isset($_SESSION)) {
             margin: 0;
             padding: 0;
             line-height: 1.6;
-        }
-
-        header {
-            background-color: #005eb8;
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            font-size: 1.6em;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .navegacao {
@@ -200,14 +189,9 @@ if (!isset($_SESSION)) {
             padding: 10px;
             background-color: #f9f9f9;
         }
-
-
     </style>
 </head>
 <body>
-    <header>
-        <h1>Catálogo de Curiosidades Históricas</h1>
-    </header>
 
     <div class="navegacao">
         <?php if (!isset($_SESSION['logado'])): ?>
