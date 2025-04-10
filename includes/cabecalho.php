@@ -191,11 +191,16 @@ if (!isset($_SESSION)) {
         }
 
         .imagem-card {
-            height: 280px;
-            object-fit: cover;
+            max-height: 250px;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
+            padding: 10px;
+            background-color: #f9f9f9;
         }
+
 
     </style>
 </head>
