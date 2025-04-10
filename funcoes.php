@@ -3,7 +3,7 @@
 function exibirItem($item) {
     echo '<div class="col">';
     echo '  <div class="card h-100 shadow-sm">';
-    echo '    <img src="' . $item["imagem"] . '" class="card-img-top" alt="' . $item["titulo"] . '">';
+    echo '    <img src="' . $item["imagem"] . '" class="card-img-top imagem-card" alt="' . $item["titulo"] . '">';
     echo '    <div class="card-body">';
     echo '      <h5 class="card-title">' . $item["titulo"] . '</h5>';
     echo '      <p class="card-text"><strong>Categoria:</strong> ' . $item["categoria"] . '</p>';

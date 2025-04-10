@@ -182,6 +182,21 @@ if (!isset($_SESSION)) {
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
+        .titulo-catalogo {
+            color: #003366;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #005eb8;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .imagem-card {
+            height: 280px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
     </style>
 </head>
 <body>
