@@ -26,36 +26,6 @@ if (!isset($_SESSION)) {
             line-height: 1.6;
         }
 
-        .navegacao {
-            text-align: center;
-            margin-top: 15px;
-            margin-bottom: -30px;
-        }
-
-        .botao {
-            display: inline-block;
-            background-color: #005eb8;
-            color: white;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .botao:hover {
-            background-color: #004b95;
-        }
-
-        .botao-sair {
-            background-color: #c62828;
-        }
-
-        .botao-sair:hover {
-            background-color: #b71c1c;
-        }
-
         main {
             max-width: 1100px;
             margin: 40px auto;
@@ -193,13 +163,16 @@ if (!isset($_SESSION)) {
 </head>
 <body>
 
-    <div class="navegacao">
-        <?php if (!isset($_SESSION['logado'])): ?>
-            <a href="login.php" class="botao">Login</a>
-        <?php else: ?>
-            <a href="protegido.php" class="botao">Área Protegida</a>
-            <a href="logout.php" class="botao botao-sair">Sair</a>
-        <?php endif; ?>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.php">🏛️ Acervo Histórico</a>
+        <div class="ms-auto">
+            <?php if (!isset($_SESSION['logado'])): ?>
+                <a href="login.php" class="btn btn-light">Login</a>
+            <?php else: ?>
+                <a href="protegido.php" class="btn btn-light me-2">Área Protegida</a>
+                <a href="logout.php" class="btn btn-danger">Sair</a>
+            <?php endif; ?>
+        </div>
     </div>
-
-    <main>
+</nav>
