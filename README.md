@@ -1,51 +1,79 @@
 # Acervo Histórico – Catálogo de Curiosidades
 
-Projeto desenvolvido em PHP como catálogo digital de curiosidades e obras históricas, permitindo navegação pública e área protegida com funcionalidades administrativas.
+Sistema desenvolvido em **PHP** como catálogo digital de curiosidades e obras históricas, com navegação pública e área protegida com funcionalidades administrativas.
 
 ---
 
 ## Sobre o projeto
 
-Este sistema apresenta um acervo de curiosidades históricas em formato digital. O visitante pode visualizar informações completas sobre cada item, aplicar filtros por categoria e, caso esteja logado, adicionar novas obras ao acervo. O projeto simula um museu virtual.
+Este sistema apresenta um acervo de **curiosidades históricas** em formato digital.  
+O visitante pode visualizar informações completas sobre cada item, aplicar **filtros por categoria** e, caso esteja logado, **adicionar novas obras** ao acervo. O projeto simula um **museu virtual** com foco em acessibilidade e organização.
 
 ---
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas
 
-- PHP 
-- HTML + CSS 
-- Controle de sessão com `password_hash()` e `password_verify()`
-- Ambiente local com XAMPP
+- **PHP** (estrutura principal)
+- **HTML + CSS + Bootstrap** (interface responsiva)
+- **Controle de Sessão** com `password_hash()` e `password_verify()`
+- **XAMPP** (servidor local)
+- **Git + GitHub** (controle de versão e colaboração)
 
 ---
 
-Funcionalidades
+## Funcionalidades
 
-### Visitante:
-- Visualiza lista de curiosidades históricas (index.php)
-- Filtra itens por categoria (filtrar.php)
-- Acessa página de detalhes com imagem e descrição (detalhes.php)
+### Visitantes:
+- Visualizam o catálogo completo (`index.php`)
+- Filtram itens por categoria (`filtrar.php`)
+- Acessam detalhes das obras (`detalhes.php`)
+- Visual elegantes e responsivo com Bootstrap
 
 ### Usuário logado:
-- Acessa área protegida (protegido.php)
-- Adiciona novas curiosidades via formulário
-- Novos itens são exibidos imediatamente no catálogo
-- Pode sair da conta com botão "Sair" (logout.php)
+- Acessa **área protegida** (`protegido.php`)
+- Cadastra novas curiosidades via formulário
+- Novas obras são exibidas **imediatamente** no catálogo (armazenadas em sessão)
+- Pode sair com o botão `Sair` (`logout.php`)
+- Vê os botões dinâmicos no topo do site: `Área Protegida` e `Sair`
 
 ---
 
-## Como acessar a área protegida
+## Como acessar a Área Protegida
 
-Para acessar a área administrativa (protegida), utilize os seguintes dados no formulário de login:
+Para acessar a área administrativa, use:
 
-**Página de login:**
 - **Usuário:** `bia`  
 - **Senha:** `segredo123`
 
-Ao entrar com sucesso, você poderá:
+---
 
-- Cadastrar novas curiosidades históricas  
-- Ver o botão "Área Protegida" no topo do site  
-- Usar o botão "Sair" para logout seguro
+## Extras implementados
+
+- Layout totalmente responsivo com **Bootstrap**
+- Título com ícone personalizado
+- Imagens centralizadas, com bordas e sombras
+- Texto das descrições formatado com **justificação e parágrafo estilo ABNT**
+- Feedback visual em mensagens de erro (login)
+- Navegação dinâmica com base na sessão (Login / Área Protegida / Sair)
 
 ---
+
+## 📂 Estrutura dos principais arquivos
+
+```bash
+Catalogo/
+│
+├── index.php              # Página inicial com catálogo
+├── detalhes.php           # Detalhes da obra
+├── filtrar.php            # Página com filtro por categoria
+├── login.php              # Formulário de login
+├── protegido.php          # Área administrativa protegida
+├── logout.php             # Encerra a sessão
+│
+├── includes/
+│   ├── cabecalho.php      # Cabeçalho com navbar
+│   └── rodape.php         # Rodapé comum
+│
+├── dados.php              # Array com as obras e suas descrições
+├── funcoes.php            # Funções auxiliares
+└── README.md              # Este arquivo
