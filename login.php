@@ -2,7 +2,7 @@
 session_start();
 
 $usuarioValido = 'bia';
-$senhaHash = '$2y$10$AR/Z59ix7gVkQZwtvTiSPuS8QUN.C8HgMDKT987WuWs31avjheZRC'; // senha: segredo123
+$senhaHash = '$2y$10$4rOHwx/NUhpbx/CYl3IHYuZNOAvOxxzmaGY6FrNHLZryyYY6R6l86'; // senha: a que você usou no gerar_hash.php
 
 $erro = false;
 
