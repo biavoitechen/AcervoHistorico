@@ -2,6 +2,7 @@
 session_start();
 include 'dados.php';
 include 'includes/cabecalho.php';
+include 'funcoes.php';
 
 $categoriaEscolhida = $_GET['categoria'] ?? '';
 ?>
@@ -35,7 +36,7 @@ $categoriaEscolhida = $_GET['categoria'] ?? '';
         <?php
         foreach ($itens as $item) {
             if ($categoriaEscolhida == '' || $item['categoria'] == $categoriaEscolhida) {
-                exibirItem($item);
+                exibirItem($item);  
             }
         }
         ?>
