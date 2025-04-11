@@ -7,6 +7,13 @@ if (!isset($_SESSION['logado'])) {
     exit;
 }
 
+// Gera categorias únicas automaticamente com base nos itens
+include 'dados.php';
+$categorias = array_unique(array_map(function($item) {
+    return $item['categoria'];
+}, $itens));
+sort($categorias); // Ordena as categorias em ordem alfabética
+
 // Lida com o envio do formulário ANTES de qualquer saída HTML
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $novoItem = [
@@ -30,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Agora que os headers foram manipulados, pode exibir HTML
 include 'includes/cabecalho.php';
-include 'dados.php';
 ?>
 
 <div class="container mt-5">

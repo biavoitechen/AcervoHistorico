@@ -18,9 +18,15 @@ include 'funcoes.php';
 <?php endif; ?>
 
 <div class="container text-center">
-    <h1 class="titulo-catalogo display-4 fw-bold mb-5">
+    <h1 class="titulo-catalogo display-4 fw-bold mb-4">
         🏛️ Catálogo de Curiosidades Históricas
     </h1>
+
+    <div class="text-center mb-4">
+        <a href="filtrar.php" class="btn btn-outline-secondary fw-bold">
+            🎯 Filtrar por Categoria
+        </a>
+    </div>
 </div>
 
 <div class="container mt-4">
