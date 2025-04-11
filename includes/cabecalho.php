@@ -147,7 +147,9 @@ if (!isset($_SESSION)) {
             border-bottom: 3px solid #005eb8;
             display: inline-block;
             padding-bottom: 8px;
+            margin: auto;
         }
+
 
         .imagem-card {
             max-height: 250px;

@@ -16,9 +16,11 @@
     </div>
 <?php endif; ?>
 
-<h1 class="titulo-catalogo display-4 text-center fw-bold mb-5">
-  🏛️ Catálogo de Curiosidades Históricas
-</h1>
+<div class="container text-center">
+    <h1 class="titulo-catalogo display-4 fw-bold mb-5">
+        🏛️ Catálogo de Curiosidades Históricas
+    </h1>
+</div>
 
 <div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
