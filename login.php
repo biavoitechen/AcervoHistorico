@@ -2,7 +2,9 @@
 session_start();
 
 $usuarioValido = 'bia';
-$senhaHash = '$2y$10$AR/Z59ix7gVkQZwtvIiSpuS8QUN.C8HgMDKT987WuWs31avjheZRC'; // senha: segredo123
+$senhaHash = '$2y$10$AR/Z59ix7gVkQZwtvTiSPuS8QUN.C8HgMDKT987WuWs31avjheZRC'; // senha: segredo123
+
+$erro = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'] ?? '';
@@ -13,25 +15,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: protegido.php');
         exit;
     } else {
-        $erro = "Usuário ou senha incorretos.";
+        $erro = true;
     }
 }
 
 include 'includes/cabecalho.php';
 ?>
 
-<h1>Área Restrita</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h2 class="text-center mb-4">🔐 Área Restrita</h2>
 
-<?php if (isset($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
+                <?php if ($erro): ?>
+                    <div class="alert alert-danger text-center">Usuário ou senha incorretos.</div>
+                <?php endif; ?>
 
-<form method="post" action="login.php">
-    <label for="usuario">Usuário:</label>
-    <input type="text" name="usuario" id="usuario" required>
-    <br>
-    <label for="senha">Senha:</label>
-    <input type="password" name="senha" id="senha" required>
-    <br>
-    <button type="submit">Entrar</button>
-</form>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuário:</label>
+                        <input type="text" id="usuario" name="usuario" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha:</label>
+                        <input type="password" id="senha" name="senha" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 fw-bold">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include 'includes/rodape.php'; ?>
