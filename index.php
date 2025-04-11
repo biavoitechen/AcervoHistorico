@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-include 'dados.php'; // ← Primeiro, carrega os itens existentes
+include 'dados.php'; 
 
-// Depois, junta com os novos itens adicionados via sessão, se houver
 if (isset($_SESSION['novos_itens'])) {
     $itens = array_merge($_SESSION['novos_itens'], $itens);
 }
