@@ -1,12 +1,36 @@
 <?php
 session_start();
 
+// Bloqueia acesso não autorizado
 if (!isset($_SESSION['logado'])) {
     header('Location: login.php');
     exit;
 }
 
+// Lida com o envio do formulário ANTES de qualquer saída HTML
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $novoItem = [
+        'id' => uniqid(),
+        'titulo' => $_POST['titulo'],
+        'categoria' => $_POST['categoria'],
+        'imagem' => $_POST['imagem'],
+        'descricao' => $_POST['descricao']
+    ];
+
+    if (!isset($_SESSION['novos_itens'])) {
+        $_SESSION['novos_itens'] = [];
+    }
+
+    $_SESSION['novos_itens'][] = $novoItem;
+    $_SESSION['sucesso'] = 'Item adicionado com sucesso!';
+
+    header('Location: protegido.php');
+    exit;
+}
+
+// Agora que os headers foram manipulados, pode exibir HTML
 include 'includes/cabecalho.php';
+include 'dados.php';
 ?>
 
 <div class="container mt-5">
@@ -58,27 +82,4 @@ include 'includes/cabecalho.php';
     </div>
 </div>
 
-<?php
-include 'dados.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $novoItem = [
-        'id' => uniqid(),
-        'titulo' => $_POST['titulo'],
-        'categoria' => $_POST['categoria'],
-        'imagem' => $_POST['imagem'],
-        'descricao' => $_POST['descricao']
-    ];
-
-    if (!isset($_SESSION['novos_itens'])) {
-        $_SESSION['novos_itens'] = [];
-    }
-
-    $_SESSION['novos_itens'][] = $novoItem;
-    $_SESSION['sucesso'] = 'Item adicionado com sucesso!';
-    header('Location: protegido.php');
-    exit;
-}
-
-include 'includes/rodape.php';
-?>
+<?php include 'includes/rodape.php'; ?>
