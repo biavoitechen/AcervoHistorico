@@ -56,7 +56,12 @@ include 'dados.php';
 
                 <div class="mb-3">
                     <label for="categoria" class="form-label fw-bold">Categoria:</label>
-                    <input type="text" class="form-control" name="categoria" id="categoria" required>
+                    <select name="categoria" id="categoria" class="form-select" required>
+                        <option value="">Selecione uma categoria</option>
+                        <?php foreach ($categorias as $cat): ?>
+                            <option value="<?= $cat ?>"><?= $cat ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <div class="mb-3">

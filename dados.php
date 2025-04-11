@@ -43,3 +43,12 @@ $itens = [
         'descricao' => 'Descoberto em 6 de dezembro de 1912 por uma equipe alemã liderada por Ludwig Borchardt no ateliê do escultor real Tutmés, em Tell el-Amarna. O busto apresenta o olho esquerdo sem a incrustação de cristal de rocha, gerando debates sobre se a obra foi deixada inacabada ou danificada. Nefertiti, cujo nome significa "a bela chegou", tornou-se um símbolo de beleza feminina devido à simetria e elegância do busto. O Egito solicita a devolução da obra, alegando retirada ilegal, enquanto a Alemanha afirma que sua aquisição foi legítima.'
     ]
 ];
+
+$categorias = [];
+
+foreach ($itens as $item) {
+    if (!in_array($item['categoria'], $categorias)) {
+        $categorias[] = $item['categoria'];
+    }
+}
+
