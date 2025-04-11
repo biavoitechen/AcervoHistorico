@@ -1,20 +1,17 @@
 <?php
 session_start();
 
-// Bloqueia acesso não autorizado
 if (!isset($_SESSION['logado'])) {
     header('Location: login.php');
     exit;
 }
 
-// Gera categorias únicas automaticamente com base nos itens
 include 'dados.php';
 $categorias = array_unique(array_map(function($item) {
     return $item['categoria'];
 }, $itens));
-sort($categorias); // Ordena as categorias em ordem alfabética
+sort($categorias); 
 
-// Lida com o envio do formulário ANTES de qualquer saída HTML
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $novoItem = [
         'id' => uniqid(),
@@ -35,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Agora que os headers foram manipulados, pode exibir HTML
 include 'includes/cabecalho.php';
 ?>
 

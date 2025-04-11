@@ -1,33 +1,36 @@
 <?php
-include 'includes/cabecalho.php';
+session_start();
 include 'dados.php';
-include 'funcoes.php';
+include 'includes/cabecalho.php';
 
 $categoriaEscolhida = $_GET['categoria'] ?? '';
 ?>
 
-<div class="container mt-5">
-    <h1 class="mb-4 fw-bold">🎯 Filtrar por Categoria</h1>
+<div class="container text-center mt-5">
+    <h1 class="fw-bold mb-4">
+        🎯 Filtrar por Categoria
+    </h1>
 
-    <form method="get" action="filtrar.php" class="mb-5">
-        <div class="row g-3 align-items-center">
-            <div class="col-md-8">
-                <label for="categoria" class="form-label fw-bold">Escolha a categoria:</label>
-                <select name="categoria" id="categoria" class="form-select">
-                    <option value="">-- Todas --</option>
-                    <option value="Antigo Egito" <?= $categoriaEscolhida == 'Antigo Egito' ? 'selected' : '' ?>>Antigo Egito</option>
-                    <option value="Grécia Antiga" <?= $categoriaEscolhida == 'Grécia Antiga' ? 'selected' : '' ?>>Grécia Antiga</option>
-                    <option value="Renascimento" <?= $categoriaEscolhida == 'Renascimento' ? 'selected' : '' ?>>Renascimento</option>
-                    <option value="Instrumentos Científicos" <?= $categoriaEscolhida == 'Instrumentos Científicos' ? 'selected' : '' ?>>Instrumentos Científicos</option>
-                </select>
-            </div>
-
-            <div class="col-md-4 d-grid mt-4">
-                <button type="submit" class="btn btn-primary fw-bold">Filtrar</button>
-            </div>
+    <form method="get" action="filtrar.php" class="d-flex justify-content-center">
+        <div class="me-2">
+            <label for="categoria" class="form-label">Escolha a categoria:</label>
+            <select name="categoria" id="categoria" class="form-select" style="width: 300px;">
+                <option value="">-- Todas --</option>
+                <option value="Antigo Egito" <?php if($categoriaEscolhida == 'Antigo Egito') echo 'selected'; ?>>Antigo Egito</option>
+                <option value="Grécia Antiga" <?php if($categoriaEscolhida == 'Grécia Antiga') echo 'selected'; ?>>Grécia Antiga</option>
+                <option value="Renascimento" <?php if($categoriaEscolhida == 'Renascimento') echo 'selected'; ?>>Renascimento</option>
+                <option value="Instrumentos Científicos" <?php if($categoriaEscolhida == 'Instrumentos Científicos') echo 'selected'; ?>>Instrumentos Científicos</option>
+            </select>
         </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
     </form>
+</div>
 
+<hr>
+
+<h2 class="text-center">Resultados:</h2>
+
+<div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <?php
         foreach ($itens as $item) {
@@ -36,10 +39,6 @@ $categoriaEscolhida = $_GET['categoria'] ?? '';
             }
         }
         ?>
-    </div>
-
-    <div class="text-center mt-5">
-        <a href="index.php" class="btn btn-outline-dark fw-bold">← Voltar ao Catálogo</a>
     </div>
 </div>
 
