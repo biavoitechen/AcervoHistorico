@@ -31,7 +31,9 @@ foreach ($itens as $item) {
 
                     <div class="col-md-8">
                         <p><strong>Categoria:</strong> <?= $itemEncontrado['categoria'] ?></p>
-                        <p class="fs-5"><?= $itemEncontrado['descricao'] ?></p>
+                        <p style="font-size: 1.1em; line-height: 1.7;">
+                            <?= nl2br($itemEncontrado['descricao']) ?>
+                        </p>
                         <a href="index.php" class="btn btn-outline-primary mt-3">← Voltar ao catálogo</a>
                     </div>
                 </div>
