@@ -4,6 +4,7 @@ include 'dados.php';
 include 'includes/cabecalho.php';
 include 'funcoes.php';
 
+// Pega a categoria enviada por GET (se houver)
 $categoriaEscolhida = $_GET['categoria'] ?? '';
 ?>
 
@@ -12,10 +13,10 @@ $categoriaEscolhida = $_GET['categoria'] ?? '';
         🎯 Filtrar por Categoria
     </h1>
 
-    <form method="get" action="filtrar.php" class="d-flex justify-content-center">
+    <form method="get" action="filtrar.php" class="d-flex justify-content-center align-items-center">
         <div class="me-2">
             <label for="categoria" class="form-label">Escolha a categoria:</label>
-            <select name="categoria" id="categoria" class="form-select" style="width: 300px;">
+            <select name="categoria" id="categoria" class="form-select" style="width: 250px;">
                 <option value="">-- Todas --</option>
                 <option value="Antigo Egito" <?php if($categoriaEscolhida == 'Antigo Egito') echo 'selected'; ?>>Antigo Egito</option>
                 <option value="Grécia Antiga" <?php if($categoriaEscolhida == 'Grécia Antiga') echo 'selected'; ?>>Grécia Antiga</option>
@@ -23,7 +24,7 @@ $categoriaEscolhida = $_GET['categoria'] ?? '';
                 <option value="Instrumentos Científicos" <?php if($categoriaEscolhida == 'Instrumentos Científicos') echo 'selected'; ?>>Instrumentos Científicos</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
     </form>
 </div>
 
@@ -36,7 +37,7 @@ $categoriaEscolhida = $_GET['categoria'] ?? '';
         <?php
         foreach ($itens as $item) {
             if ($categoriaEscolhida == '' || $item['categoria'] == $categoriaEscolhida) {
-                exibirItem($item);  
+                exibirItem($item);  // Função definida em 'funcoes.php'
             }
         }
         ?>
