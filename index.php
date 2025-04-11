@@ -1,13 +1,15 @@
-<?php 
-    if (isset($_SESSION['novos_itens'])) {
-        $itens = array_merge($_SESSION['novos_itens'], $itens);
-    }
-?>
-
 <?php
-    include 'includes/cabecalho.php';
-    include 'dados.php';
-    include 'funcoes.php';
+session_start();
+
+include 'dados.php'; // ← Primeiro, carrega os itens existentes
+
+// Depois, junta com os novos itens adicionados via sessão, se houver
+if (isset($_SESSION['novos_itens'])) {
+    $itens = array_merge($_SESSION['novos_itens'], $itens);
+}
+
+include 'includes/cabecalho.php';
+include 'funcoes.php';
 ?>
 
 <?php if (isset($_GET['logout']) && $_GET['logout'] == 1): ?>
@@ -30,6 +32,4 @@
     </div>
 </div>
 
-<?php
-    include 'includes/rodape.php';
-?>
+<?php include 'includes/rodape.php'; ?>

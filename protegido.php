@@ -1,61 +1,84 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+if (!isset($_SESSION['logado'])) {
     header('Location: login.php');
     exit;
-}
-
-if (!isset($_SESSION['novos_itens'])) {
-    $_SESSION['novos_itens'] = [];
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = $_POST['titulo'] ?? '';
-    $categoria = $_POST['categoria'] ?? '';
-    $imagem = $_POST['imagem'] ?? '';
-    $descricao = $_POST['descricao'] ?? '';
-
-    if ($titulo && $categoria && $imagem && $descricao) {
-        $novoItem = [
-            'id' => time(), 
-            'titulo' => $titulo,
-            'categoria' => $categoria,
-            'imagem' => $imagem,
-            'descricao' => $descricao
-        ];
-
-        $_SESSION['novos_itens'][] = $novoItem;
-        $mensagem = "Item adicionado com sucesso!";
-    } else {
-        $erro = "Preencha todos os campos.";
-    }
 }
 
 include 'includes/cabecalho.php';
 ?>
 
-<h1>Área Protegida</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
 
-<?php if (isset($mensagem)) echo "<p style='color:green;'>$mensagem</p>"; ?>
-<?php if (isset($erro)) echo "<p class='erro'>$erro</p>"; ?>
+            <h1 class="mb-4 text-center fw-bold">
+                🔒 Área Protegida
+            </h1>
 
-<form method="post" action="protegido.php">
-    <label for="titulo">Título:</label>
-    <input type="text" name="titulo" id="titulo" required>
+            <?php if (isset($_SESSION['sucesso'])): ?>
+                <div class="alert alert-success text-center">
+                    <?= $_SESSION['sucesso'] ?>
+                </div>
+                <?php unset($_SESSION['sucesso']); ?>
+            <?php endif; ?>
 
-    <label for="categoria">Categoria:</label>
-    <input type="text" name="categoria" id="categoria" required>
+            <form action="protegido.php" method="POST" class="bg-light p-4 rounded shadow-sm">
+                <div class="mb-3">
+                    <label for="titulo" class="form-label fw-bold">Título:</label>
+                    <input type="text" class="form-control" name="titulo" id="titulo" required>
+                </div>
 
-    <label for="imagem">Caminho da imagem (ex: imagens/nome.jpg):</label>
-    <input type="text" name="imagem" id="imagem" required>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label fw-bold">Categoria:</label>
+                    <input type="text" class="form-control" name="categoria" id="categoria" required>
+                </div>
 
-    <label for="descricao">Descrição:</label>
-    <textarea name="descricao" id="descricao" rows="4" required style="width:100%;"></textarea>
+                <div class="mb-3">
+                    <label for="imagem" class="form-label fw-bold">Caminho da imagem (ex: imagens/nome.jpg):</label>
+                    <input type="text" class="form-control" name="imagem" id="imagem" required>
+                </div>
 
-    <button type="submit">Adicionar ao Catálogo</button>
-</form>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label fw-bold">Descrição:</label>
+                    <textarea class="form-control" name="descricao" id="descricao" rows="5" required></textarea>
+                </div>
 
-<p><a href="index.php">← Voltar ao catálogo</a></p>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary fw-bold">Adicionar ao Catálogo</button>
+                </div>
+            </form>
 
-<?php include 'includes/rodape.php'; ?>
+            <div class="text-start mt-4">
+                <a href="index.php" class="text-decoration-none">← Voltar ao catálogo</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php
+include 'dados.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $novoItem = [
+        'id' => uniqid(),
+        'titulo' => $_POST['titulo'],
+        'categoria' => $_POST['categoria'],
+        'imagem' => $_POST['imagem'],
+        'descricao' => $_POST['descricao']
+    ];
+
+    if (!isset($_SESSION['novos_itens'])) {
+        $_SESSION['novos_itens'] = [];
+    }
+
+    $_SESSION['novos_itens'][] = $novoItem;
+    $_SESSION['sucesso'] = 'Item adicionado com sucesso!';
+    header('Location: protegido.php');
+    exit;
+}
+
+include 'includes/rodape.php';
+?>
