@@ -58,7 +58,7 @@ Para acessar a área administrativa, use:
 
 ---
 
-## 📂 Estrutura dos principais arquivos
+## Estrutura dos principais arquivos
 
 ```bash
 Catalogo/
