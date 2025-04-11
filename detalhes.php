@@ -3,15 +3,12 @@ session_start();
 include 'includes/cabecalho.php';
 include 'dados.php';
 
-// Adiciona também os itens criados pela sessão, se houver
 if (isset($_SESSION['novos_itens'])) {
     $itens = array_merge($_SESSION['novos_itens'], $itens);
 }
 
-// Captura o ID da URL
 $id = $_GET['id'] ?? null;
 
-// Busca o item correspondente
 $itemEncontrado = null;
 foreach ($itens as $item) {
     if ($item['id'] == $id) {
@@ -22,18 +19,31 @@ foreach ($itens as $item) {
 ?>
 
 <?php if ($itemEncontrado): ?>
-    <h1><?php echo $itemEncontrado['titulo']; ?></h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h1 class="mb-4 fw-bold"><?= $itemEncontrado['titulo'] ?></h1>
 
-    <img src="<?php echo $itemEncontrado['imagem']; ?>" alt="<?php echo $itemEncontrado['titulo']; ?>" style="max-width: 400px; border-radius: 10px; margin-bottom: 20px;">
+                <div class="row align-items-start">
+                    <div class="col-md-4 text-center mb-4">
+                        <img src="<?= $itemEncontrado['imagem'] ?>" alt="<?= $itemEncontrado['titulo'] ?>" class="img-fluid rounded shadow">
+                    </div>
 
-    <p><strong>Categoria:</strong> <?php echo $itemEncontrado['categoria']; ?></p>
-    <p style="font-size: 1.1em;"><?php echo $itemEncontrado['descricao']; ?></p>
-
-    <a href="index.php">← Voltar ao catálogo</a>
+                    <div class="col-md-8">
+                        <p><strong>Categoria:</strong> <?= $itemEncontrado['categoria'] ?></p>
+                        <p class="fs-5"><?= $itemEncontrado['descricao'] ?></p>
+                        <a href="index.php" class="btn btn-outline-primary mt-3">← Voltar ao catálogo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php else: ?>
-    <p style="color: red;">Item não encontrado.</p>
-    <a href="index.php">← Voltar ao catálogo</a>
+    <div class="container text-center mt-5">
+        <p class="text-danger fw-bold">Item não encontrado.</p>
+        <a href="index.php" class="btn btn-secondary mt-2">← Voltar ao catálogo</a>
+    </div>
 <?php endif; ?>
 
 <?php include 'includes/rodape.php'; ?>
